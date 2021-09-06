@@ -18,7 +18,8 @@ namespace DotNetAgent.CLI
                     var agentConfigSection = hostContext.Configuration.GetSection(nameof(AgentConfig));
                     var agentConfig = agentConfigSection.Get<AgentConfig>();
                     services.AddSingleton(agentConfig);
-                    services.AddSingleton<IHostedService, TimedHostedService>();
+                    services.AddSingleton<IHostedService, ExampleTimedHostedService>();
+                    services.AddHostedService<ExampleBackgroundService>();
                 });
             await hostBuilder.RunConsoleAsync();
         }
